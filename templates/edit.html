@@ -1,0 +1,26 @@
+x{% extends 'base.html' %}
+
+{% block content %}
+
+{#     title #}
+    <h1>{% block title %} Edit "{{ post['title'] }}" {% endblock %}</h1>
+{#    we use the data that was rendered together with this template from the view logic #}
+{# inside here as per logic in app.py i have access to the posts dictionary #}
+    <form method="post">
+        <label for="title">Title</label>
+        <br>
+        <input type="text" name="title" placeholder="Enter Post Title" value="{{request.form['title'] or post['title']}}"/>
+        <br>
+        <label for="content">Content</label>
+        <br>
+        <textarea
+          name="content"
+          placeholder="Post Content"
+          rows="15"
+          cols="60"
+       >{{ request.form['content'] or post['content'] }}</textarea>
+       <br>
+        <button type="submit">Submit</button>
+
+    </form>
+{% endblock %}

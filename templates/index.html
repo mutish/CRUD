@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{# title #}
+    <h1>{% block title %} posts {% endblock %}</h1>
+{#access gained to posts dictionary#}
+    {% for x in posts %}
+        <div class="post">
+            <p>{{ x['created'] }}</p>
+            <p>{{ x['title'] }}</p>
+            <p>{{ x['content'] }}</p>
+
+            <a href="{{ url_for('edit' , id=x['id'])}}">Edit Post</a>
+            <a href="{{ url_for('delete' , id=x['id'])}}">Delete Post</a>
+
+        </div>
+ {% endfor %}
+
+{% endblock %}
